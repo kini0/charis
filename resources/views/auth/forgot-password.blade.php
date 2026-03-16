@@ -1,4 +1,4 @@
-@extends('layouts.auth')
+@extends('layouts.app.auth')
 
 @section('title', 'Mot de passe oublié')
 @section('page-title', 'Mot de passe oublié ?')

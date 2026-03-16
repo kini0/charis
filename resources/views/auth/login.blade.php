@@ -1,4 +1,4 @@
-@extends('layouts.auth')
+@extends('layouts.app.auth')
 
 @section('title', 'Connexion')
 @section('page-title', 'Bon retour 👋')
@@ -19,9 +19,9 @@
                             @csrf
 
                             <div class="mb-3">
-                                <label for="username" class="form-label">Nom d'utilisateur</label>
-                                <input type="text" class="form-control" id="username"
-                                    placeholder="Entrez le nom d'utilisateur">
+                                <label for="username" class="form-label">Adresse e-mail</label>
+                                <input type="email" name="email" class="form-control" id="username"
+                                    placeholder="Entrez votre adresse e-mail">
                             </div>
 
                             <div class="mb-3">
@@ -30,7 +30,7 @@
                                 </div>
                                 <label class="form-label" for="password-input">Mot de passe</label>
                                 <div class="position-relative auth-pass-inputgroup mb-3">
-                                    <input type="password" class="form-control pe-5 password-input"
+                                    <input type="password" name="password" class="form-control pe-5 password-input"
                                         placeholder="Entrez le mot de passe" id="password-input">
                                     <button
                                         class="btn btn-link position-absolute end-0 top-0 text-decoration-none text-muted password-addon"

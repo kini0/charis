@@ -1,11 +1,12 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Auth\EmailVerificationController;
+use App\Http\Controllers\Auth\ForgotPasswordController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
-use App\Http\Controllers\Auth\ForgotPasswordController;
 use App\Http\Controllers\Auth\ResetPasswordController;
-use App\Http\Controllers\Auth\EmailVerificationController;
+use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -57,3 +58,22 @@ Route::controller(ResetPasswordController::class)->group(function () {
 | Routes protégées — Utilisateur connecté
 |--------------------------------------------------------------------------
 */
+
+Route::group(['middleware' => 'auth'], function () {
+
+    // ==========================================
+    // ADMIN ESPACE
+    // ==========================================
+    Route::prefix('admin')
+        ->name('admin.')
+        ->group(function () {
+
+            Route::controller(AdminController::class)->group(function () {
+                Route::get('/espace', 'index')->name('espace');
+
+                Route::get('/profile', 'profile')->name('profile');
+
+                Route::post('/profile/update', 'updateProfile')->name('profileUpdate');
+            });
+        });
+});
